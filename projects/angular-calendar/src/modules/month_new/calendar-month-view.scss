@@ -1,0 +1,393 @@
+@import '../../variables';
+
+$cal-month-view-vars: () !default;
+$cal-month-view-vars: map-merge($cal-vars, $cal-month-view-vars);
+
+@mixin cal-month-view-theme($overrides) {
+  $theme: map-merge($cal-month-view-vars, $overrides);
+
+  .cal-month-view {
+    background-color: map-get($theme, bg-primary);
+
+    .cal-cell-row:hover {
+      background-color: map-get($theme, bg-secondary);
+    }
+
+    .cal-cell-row .cal-cell:hover,
+    .cal-cell.cal-has-events.cal-open {
+      background-color: map-get($theme, bg-active);
+    }
+
+    .cal-days {
+      border-color: map-get($theme, border-color);
+    }
+
+    .cal-day-cell:not(:last-child) {
+      border-right-color: map-get($theme, border-color);
+    }
+
+    .cal-days .cal-cell-row {
+      border-bottom-color: map-get($theme, border-color);
+    }
+
+    .cal-day-badge {
+      background-color: map-get($theme, badge-color);
+      color: map-get($theme, white);
+    }
+
+    .cal-event {
+      background-color: map-get($theme, event-color-primary);
+      border-color: map-get($theme, event-color-secondary);
+      color: map-get($theme, white);
+    }
+
+    .cal-day-cell.cal-weekend .cal-day-number {
+      color: map-get($theme, weekend-color);
+    }
+
+    .cal-day-cell.cal-today {
+      background-color: map-get($theme, today-bg);
+    }
+
+    .cal-day-cell.cal-drag-over {
+      background-color: darken(map-get($theme, bg-active), 5%) !important;
+    }
+
+    .cal-open-day-panel {
+//      color: map-get($theme, white);
+//      background-color: map-get($theme, gray);
+      color: #000000;
+      background-color: #FFFFFF;
+//      box-shadow: inset 0 0 15px 0 rgba(map-get($theme, black), 0.5);
+    }
+  }
+}
+
+.cal-month-view {
+  .cal-header {
+    text-align: center;
+    font-weight: bolder;
+  }
+
+  .cal-header .cal-cell {
+    padding: 5px 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap;
+  }
+
+  .cal-days {
+    border: 1px solid;
+    border-bottom: 0;
+  }
+
+  .cal-cell-top {
+//    min-height: 78px;
+    min-height: 38px;
+//GS    flex: 1;
+  }
+
+  .cal-cell-row {
+    display: flex;
+  }
+
+  .cal-cell {
+    float: left;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+//    align-items: stretch;
+  }
+
+  .cal-day-cell {
+    min-height: 100px;
+
+    // ie11 hack for https://github.com/mattlewis92/angular-calendar/issues/501
+    @media all and (-ms-high-contrast: none) {
+      display: block;
+    }
+  }
+
+  .cal-day-cell:not(:last-child) {
+    border-right: 1px solid;
+  }
+
+  .cal-days .cal-cell-row {
+    z-index: 0;
+    border-bottom: 1px solid;
+  }
+
+  .cal-day-badge {
+    margin-top: 18px;
+    margin-left: 10px;
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+  }
+
+  .cal-day-number {
+    font-size: 1.2em;
+    font-weight: 400;
+    opacity: 0.5;
+    //margin-top: 15px;
+    //margin-right: 15px;
+    //float: right;
+    //margin-bottom: 10px;
+
+    margin-top: 3px;
+    margin-right: 3px;
+    margin-left: 6px;
+    float: left;
+    margin-bottom: 5px;
+  }
+
+  .cal-events {
+//	  position : absolute;
+//    flex: 1;
+//GS    align-items: flex-end;
+//    align-items: flex-start; /* GS */
+//    align-content: flex-start; /* GS */
+//    align-content: flex-end; /* GS */
+vertical-align: top;
+    margin: 3px;
+//GS    line-height: 10px;
+    line-height: 16px; /* GS */
+    display: flex;
+    flex-direction: column; /* GS */
+    //flex-direction: column-reverse; /* GS */
+    //flex-wrap: wrap;
+    //align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .cal-event {
+//GS    width: 10px;
+//GS    height: 10px;
+//GS    border-radius: 50%;
+    border-radius: 3px;   /* GS */
+    display: inline-block;
+    padding-left: 4px;  /* GS */
+    padding-right: 4px; /* GS */
+    margin: 2px;
+//    box-shadow: 2px 2px 4px -2px gray inset;  /* GS */
+//    box-shadow: 4px 4px;
+        font-size: 12px;
+            border: 1px solid;
+  }
+
+  .cal-event-day {
+//GS    width: 10px;
+//GS    height: 10px;
+//GS    border-radius: 50%;
+    border-radius: 0px;   /* GS */
+    display: inline-block;
+    padding-left: 4px;  /* GS */
+    padding-right: 4px; /* GS */
+    margin: 2px;
+//    box-shadow: 2px 2px 4px -2px gray inset;  /* GS */
+//    box-shadow: 4px 4px;
+       font-size: 12px;
+           border: 1px solid;
+  }
+/*
+  .cal-event-task-title {
+    //z-index: 2;
+    //white-space: nowrap;
+    font-size: 12px;
+    white-space: pre;
+    //white-space: pre-wrap;
+    //white-space: pre-line;
+    margin : 0 auto;
+    padding : 0;
+  }
+*/
+
+  .cal-event-task {
+//GS    width: 10px;
+//GS    height: 10px;
+//GS    border-radius: 50%;
+//    border-radius: 3px;   /* GS */
+//    display: inline-block;
+    background-color: rgba(255,255,255,0);
+    border-bottom: solid;
+    padding-left: 4px;  /* GS */
+    padding-right: 4px; /* GS */
+//    margin: 2px;
+    margin-top: 2px;
+    margin-bottom: 8px;
+    margin-left: -4px;
+    margin-right: -4px;
+    align-self: stretch;
+    font-size: 12px;
+        border: 1px solid;
+  }     
+
+
+  .cal-event-task-start {
+    position : relative ;
+    display: inline-block;
+    margin-left: 2px;  /* GS */
+    padding-left: 8px;  /* GS */
+    //padding-right: 1px; /* GS */
+    //margin: 2px;
+    width: 100%;
+
+    background: #3399FF;/* ボックスの背景色を指定する */
+    //border-left-radius: 50%;
+    border-top-left-radius: 7em 5em;
+    border-bottom-left-radius: 7em 5em;
+            //border: 1px solid;
+      font-size: 12px;
+      color: #FFFFFF;
+}
+/*
+ .cal-event-task-start:after {
+   position: absolute;   
+   content: "";  
+   top: -4px;  // 矢　縦位置  
+   left: -32px;        // 矢　横位置  
+   border:12px solid;   // 矢　縦幅 
+   border-color:transparent;    // 境界線の色をなしにする 
+   border-right: 20px solid #3399FF;// 矢　横幅 
+
+}
+*/
+  .cal-event-task-mid {
+    position : relative ;
+        display: inline-block;
+    width: 101%;
+    //padding-left: 4px;  /* GS */
+    //padding-right: 4px; /* GS */
+    background: #3399FF;/* ボックスの背景色を指定する */
+    //padding-left: 4px;  /* GS */
+    //padding-right: 4px; /* GS */
+    //margin: 2px;
+    font-size: 12px;
+//       color:  #3399FF;
+   }
+
+
+  .cal-event-task-end {
+    position : relative ;
+       display: inline-block;
+    width: 98%;
+    padding-right: 4px; /* GS */
+    //margin: 2px;
+    background: #3399FF;/* ボックスの背景色を指定する */
+     border-top-right-radius: 7em 5em;
+     border-bottom-right-radius: 7em 5em;
+    font-size: 12px;
+      color: #FFFFFF;
+     //   border: 1px solid;
+}
+/*
+ .cal-event-task-end:after {
+   position: absolute;	
+   content: "";	
+   top: -4px;	 
+   right: -30px; 
+   border:12px solid;	
+   border-color:transparent;	
+   border-left: 20px solid #3399FF;
+
+}
+*/
+
+  .cal-event-task-free {
+    position : relative ;
+      display: inline-block;
+ visibility:hidden;
+
+}
+  .cal-day-cell.cal-in-month.cal-has-events {
+    cursor: pointer;
+  }
+
+  .cal-day-cell.cal-out-month .cal-day-number {
+    opacity: 0.1;
+    cursor: default;
+  }
+
+  .cal-day-cell.cal-today .cal-day-number {
+    //font-size: 1.9em;
+    font-size: 1.2em;
+  }
+
+//  .cal-open-day-panel {
+//    display: inline-flex;
+//   }
+
+  .cal-open-day-panel {
+    //display: inline-flex;
+    display: flex;
+    padding: 0px;
+    width: 100%;
+  }
+
+  .cal-open-day-events {
+    padding: 0px;
+   // width: 40%;
+    width: 28.5%;
+
+  }
+
+  .cal-open-day-events-list{
+    display: flex;
+
+  }
+
+  .cal-open-day-memo {
+   border: 0;
+    padding: 0px;
+    width: 71.5%;
+//     min-width: 60%;
+//     min-height: 500px;
+     background-color: white;
+      font-size: 0.8em;
+   //    font-weight: bold;
+  }
+
+  .cal-event-title {
+    font-size: 0.8em;
+    width: 100%;
+
+  }
+
+  .cal-open-day-panel .cal-event {
+    //position: relative;
+    top: 0px;
+  }
+
+  .cal-out-month {
+    .cal-day-badge,
+    .cal-event {
+      opacity: 0.3;
+    }
+  }
+
+  .cal-draggable {
+    cursor: move;
+  }
+
+  .cal-drag-active * {
+    pointer-events: none;
+  }
+
+  .cal-event-title {
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+@include cal-month-view-theme($cal-month-view-vars);

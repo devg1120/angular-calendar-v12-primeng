@@ -1,0 +1,18 @@
+$ ng g library calendar-utils
+$ ng build --project=calendar-utils
+------------------------------------------------------------------------------
+Building entry point 'calendar-utils'
+------------------------------------------------------------------------------
+Compiling TypeScript sources through ngc
+Bundling to FESM2015
+Bundling to FESM5
+Bundling to UMD
+Minifying UMD bundle
+Writing package metadata
+Built calendar-utils
+
+------------------------------------------------------------------------------
+Built Angular Package
+ - from: /home/gusa1120/angular-calendar/projects/calendar-utils
+ - to:   /home/gusa1120/angular-calendar/dist/calendar-utils
+------------------------------------------------------------------------------
