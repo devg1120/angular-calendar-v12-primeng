@@ -10,6 +10,9 @@ import {
 } from '@ng-bootstrap/ng-bootstrap';
 
 import {TabViewModule} from 'primeng/tabview';
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
+
 import {AccordionModule} from 'primeng/accordion';
 import {TooltipModule} from 'primeng/tooltip';
 
@@ -33,6 +36,8 @@ import { ClipboardModule } from 'ngx-clipboard';
     NgbTooltipModule,
 
     TabViewModule,
+    ToolbarModule,
+    ButtonModule,
     AccordionModule,
     TooltipModule,
 

@@ -119,26 +119,6 @@
       mwlDraggableScrollContainer
     >
       <div class="card" *ngIf="firstDemoLoaded; else loading">
-        <p-toolbar>
-           <div class="p-toolbar-group-left">
-               <button pButton pRipple type="button" 
-                  label="{{ activeDemo.label }}" 
-                  class="p-button-text"></button>
-               <p-button label="New" icon="pi pi-plus"></p-button>
-                   
-               
-           </div>
-           
-           <div class="p-toolbar-group-right">
-               <p-button icon="pi pi-search"></p-button>
-               <p-button label="Edit in Stackblitz " 
-                         icon="pi pi-upload" 
-                         styleClass="p-button-success" 
-                         (onClick)="editInStackblitz(activeDemo)" >
-               </p-button>
-           </div>
-        </p-toolbar>
-        <!--
         <div class="card-header">
           <div class="row">
             <div class="col-md-6"><h3>{{ activeDemo.label }}</h3></div>
@@ -152,7 +132,6 @@
             </div>
           </div>
         </div>
-        -->
         <div class="card-body">
           
           <p-tabView>
