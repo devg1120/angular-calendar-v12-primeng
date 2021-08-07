@@ -1,59 +1,62 @@
-<p-toolbar>
-  <div class="p-toolbar-group-left">
-      <button pButton type="button"
-        class="p-button-outlined"
+<div class="row text-center">
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
         mwlCalendarPreviousView
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
-        label="Previous"
       >
-      </button>
-      <button pButton type="button"
-        class="p-button-outlined"
+        Previous
+      </div>
+      <div
+        class="btn btn-outline-secondary"
         mwlCalendarToday
         [(viewDate)]="viewDate"
-        label="Today"
       >
-      </button>
-      <button pButton type="button"
-        class="p-button-outlined"
+        Today
+      </div>
+      <div
+        class="btn btn-primary"
         mwlCalendarNextView
         [view]="view"
         [(viewDate)]="viewDate"
         (viewDateChange)="closeOpenMonthViewDay()"
-        label="Next"
       >
-      </button>
+        Next
+      </div>
+    </div>
   </div>
-  <div class="p-toolbar-group-center">
+  <div class="col-md-4">
     <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h3>
   </div>
-  <div class="p-toolbar-group-right">
-      <button pButton type="button"
-        class="p-button-outlined"
+  <div class="col-md-4">
+    <div class="btn-group">
+      <div
+        class="btn btn-primary"
         (click)="setView(CalendarView.Month)"
         [class.active]="view === CalendarView.Month"
-        label="Month"
       >
-      </button>
-      <button pButton type="button"
-        class="p-button-outlined"
+        Month
+      </div>
+      <div
+        class="btn btn-primary"
         (click)="setView(CalendarView.Week)"
         [class.active]="view === CalendarView.Week"
-        label="Week"
       >
-      </button>
-      <button pButton type="button"
-        class="p-button-outlined"
+        Week
+      </div>
+      <div
+        class="btn btn-primary"
         (click)="setView(CalendarView.Day)"
         [class.active]="view === CalendarView.Day"
-        label="Day"
       >
-      </button>
+        Day
+      </div>
+    </div>
   </div>
-</p-toolbar>
-
+</div>
 <br />
 <div [ngSwitch]="view">
   <mwl-calendar-month-view

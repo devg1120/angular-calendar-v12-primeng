@@ -7,11 +7,17 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { DemoComponent } from './component';
 
+import {ToolbarModule} from 'primeng/toolbar';
+import {ButtonModule} from 'primeng/button';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     NgbModalModule,
+    ToolbarModule,
+    ButtonModule,
+
     FlatpickrModule.forRoot(),
     CalendarModule.forRoot({
       provide: DateAdapter,

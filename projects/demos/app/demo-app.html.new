@@ -1,4 +1,3 @@
-<!--
 <nav
   class="navbar navbar-expand-lg navbar-light bg-light fixed-top"
   [class.navbar-dark]="activeDemo?.darkTheme"
@@ -103,7 +102,7 @@
     </ul>
   </div>
 </nav>
--->
+
 <ng-template #loading>
   <div class="card">
     <div class="card-body text-center">
@@ -120,8 +119,6 @@
       mwlDraggableScrollContainer
     >
       <div class="card" *ngIf="firstDemoLoaded; else loading">
-        
-        <!--
         <p-toolbar>
            <div class="p-toolbar-group-left">
                <button pButton pRipple type="button" 
@@ -141,8 +138,6 @@
                </p-button>
            </div>
         </p-toolbar>
-        -->
-        {{ activeDemo.label }} 
         <div class="card-body">
           
           <p-tabView>

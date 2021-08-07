@@ -46,7 +46,9 @@
               "projects/demos/assets"
             ],
             "styles": [
-              "projects/demos/styles.scss"
+              "projects/demos/styles.scss",
+              "./node_modules/primeflex/primeflex.css"
+
             ],
             "scripts": [],
             "vendorChunk": true,

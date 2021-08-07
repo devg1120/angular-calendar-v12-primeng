@@ -15,6 +15,7 @@ import {ButtonModule} from 'primeng/button';
 
 import {AccordionModule} from 'primeng/accordion';
 import {TooltipModule} from 'primeng/tooltip';
+import {CardModule} from 'primeng/card';
 
 import { Angulartics2Module } from 'angulartics2';
 import { DragAndDropModule } from 'angular-draggable-droppable';
@@ -40,6 +41,7 @@ import { ClipboardModule } from 'ngx-clipboard';
     ButtonModule,
     AccordionModule,
     TooltipModule,
+    CardModule,
 
     DragAndDropModule,
     Angulartics2Module.forRoot({
